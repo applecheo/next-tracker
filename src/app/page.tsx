@@ -1,9 +1,7 @@
 import CompanyList from "@/components/CompanyList";
 import Header from "@/components/Header";
-import MarketData from "@/components/MarketLink";
 import MarketList from "@/components/MarketList";
 import MarketStatus from "@/components/MarketStatus";
-import MostFollowed from "@/components/MostFollowed";
 import NewsSection from "@/components/NewsSection";
 import PortfolioItem from "@/components/PortfolioItem";
 import React from "react";
@@ -100,47 +98,10 @@ const Home = async ({
           </div>
         </div>
       </div>
+
       <MarketList marketData={marketData} page={page} />
 
       <NewsSection />
-
-      <header className="flex-none flex h-16 bg-slate-900  border-gray-700 border-t px-4 items-center">
-        <h1 className="font-semibold text-lg">Compare market</h1>
-      </header>
-      <MarketData />
-      <header className="flex-none flex h-16 bg-slate-900 border-t border-gray-700 px-4 items-center">
-        <h1 className="font-semibold text-lg">Most Followed</h1>
-      </header>
-      <div className="flex items-center bg-slate-900 text-gray-800">
-        <div className="p-4 w-full">
-          <div className="grid grid-cols-12 gap-4">
-            <MostFollowed
-              name="Bitcoin USD"
-              followers="300,205"
-              ticker="BTC/USD"
-              bgColor="bg-orange-500"
-            />
-            <MostFollowed
-              name="Apple Inc"
-              followers="200,102"
-              ticker="AAPL"
-              bgColor="bg-gray-700"
-            />
-            <MostFollowed
-              name="Nifty 50"
-              followers="100,000"
-              ticker="NIFTY_50"
-              bgColor="bg-yellow-500"
-            />
-            <MostFollowed
-              name="Microsoft"
-              followers="150,505"
-              ticker="MSFT"
-              bgColor="bg-blue-500"
-            />
-          </div>
-        </div>
-      </div>
 
       <MarketStatus />
       <CompanyList />

@@ -4,36 +4,21 @@ const MarketData = () => {
   return (
     <div>
       <header className="flex-none flex bg-slate-900 text-gray-950 px-4 items-center">
-        <a
-          href="#"
-          className="inline-block rounded-full text-blue-700 bg-blue-100 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-        >
+        <button className="inline-block rounded-full text-blue-700 bg-blue-100 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
           United States
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-        >
+        </button>
+        <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
           Asia
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-        >
+        </button>
+        <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
           Europe
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-        >
+        </button>
+        <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
           Currency
-        </a>
-        <a
-          href="#"
-          className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-        >
+        </button>
+        <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
           Crypto
-        </a>
+        </button>
       </header>
       <div className="flex items-center bg-slate-900 text-gray-950 ">
         <div className="p-4 w-full">

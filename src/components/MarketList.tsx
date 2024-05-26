@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Pagination from "./Pagination";
+import { addCommas } from "@/utils/common";
 
 const MarketList = ({ marketData }: any) => {
   return (
@@ -10,10 +11,27 @@ const MarketList = ({ marketData }: any) => {
           <div className="mb-0 px-4 py-3 border-0 bg-slate-900 border-t border-gray-700">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-1 max-w-full flex-grow flex-1 ">
-                <h3 className="font-semibold text-lg text-white">
+                <h3 className="font-semibold text-lg text-white mb-5">
                   Market List
                 </h3>
               </div>
+              <header className="flex-none flex bg-slate-900 text-gray-950 px-5 items-center">
+                <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                  United States
+                </button>
+                <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                  Asia
+                </button>
+                <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                  Europe
+                </button>
+                <button className="inline-block rounded-full text-white text-xs mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                  Currency
+                </button>
+                <button className="inline-block rounded-full text-blue-700 bg-blue-100 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1">
+                  Crypto
+                </button>
+              </header>
             </div>
           </div>
           <div className="block w-full overflow-x-auto">
@@ -30,16 +48,16 @@ const MarketList = ({ marketData }: any) => {
                     Price
                   </th>
                   <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-right bg-gray-700 text-white border-gray-700">
-                    1h%
-                  </th>
-                  <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-right bg-gray-700 text-white border-gray-700">
                     24h%
                   </th>
                   <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-right bg-gray-700 text-white border-gray-700">
-                    7d%
+                    Market Cap
                   </th>
                   <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center bg-gray-700 text-white border-gray-700">
-                    Last 7 days
+                    Total Volume
+                  </th>
+                  <th className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-right bg-gray-700 text-white border-gray-700">
+                    Last 7 Days
                   </th>
                 </tr>
               </thead>
@@ -51,7 +69,9 @@ const MarketList = ({ marketData }: any) => {
                       current_price,
                       market_cap_rank,
                       image,
+                      price_change_percentage_24h,
                       market_cap_change_percentage_24h,
+                      total_volume,
                     } = security;
                     return (
                       <tr
@@ -72,15 +92,47 @@ const MarketList = ({ marketData }: any) => {
                           </span>
                         </th>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold text-white">
-                          {`$${current_price} USD`}
+                          {`$${addCommas(current_price)} USD`}
                         </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold text-white"></td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold text-white">
-                          {`${market_cap_change_percentage_24h}%`}
+                        <td
+                          className={`border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold ${
+                            price_change_percentage_24h > 0
+                              ? "text-green-500"
+                              : price_change_percentage_24h < 0
+                              ? "text-red-500"
+                              : "text-gray-500"
+                          }`}
+                        >
+                          {`${price_change_percentage_24h}% ${
+                            price_change_percentage_24h > 0
+                              ? "↑"
+                              : price_change_percentage_24h < 0
+                              ? "↓"
+                              : "-"
+                          }`}
                         </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold text-white"></td>
+                        <td
+                          className={`border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold ${
+                            market_cap_change_percentage_24h > 0
+                              ? "text-green-500"
+                              : price_change_percentage_24h < 0
+                              ? "text-red-500"
+                              : "text-gray-500"
+                          }`}
+                        >
+                          {`${market_cap_change_percentage_24h}% ${
+                            market_cap_change_percentage_24h > 0
+                              ? "↑"
+                              : market_cap_change_percentage_24h < 0
+                              ? "↓"
+                              : "-"
+                          }`}
+                        </td>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-center text-xs whitespace-nowrap p-4 font-semibold text-white">
-                          0.05%
+                          ${addCommas(total_volume)}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-right text-xs whitespace-nowrap p-4 font-semibold text-white">
+                          Chart
                         </td>
                       </tr>
                     );
